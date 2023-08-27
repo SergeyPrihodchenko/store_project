@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -15,14 +16,17 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Main', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
+});
+
+Route::get('/controlPanel', function () {
+    return Inertia::render('ControlPanel/ControlProducts/ControlPanel', []);
 });
 
 Route::get('/dashboard', function () {

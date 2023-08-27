@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->char('name', 120);
+            $table->foreignId('category_id')->references('id')->on('categories');
+            $table->float('price');
+            $table->integer('count');
+            $table->json('description');
             $table->timestamps();
         });
     }
